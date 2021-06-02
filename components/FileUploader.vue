@@ -5,7 +5,7 @@
     @dragover="fileDragIn"
     @drop="handleFileDrop, fileDragOut"
   >
-    <v-form>
+    <v-form :enctype="mimeType">
       <v-card-title class="pa-0">Add your file here:</v-card-title>
       <v-col
         v-show="files.length"
@@ -15,7 +15,8 @@
         <input
           type="file"
           name="file-input"
-          multiply="false"
+          :multiply="multiply"
+          :accept="mimeType"
           @change="handleFileInput"
         >
         <h3 class="text--secondary">
@@ -56,6 +57,16 @@
 <script>
 
 export default {
+  props: {
+    multiply: {
+      type: Boolean,
+      default: false
+    },
+    mimeType: {
+      type: String | null,
+      default: null
+    }
+  },
   data: () => {
     return {
       files: []
@@ -66,26 +77,40 @@ export default {
       let droppedFiles = e.dataTransfer.files;
       if(!droppedFiles) return;
       ([...droppedFiles]).forEach(f => {
-    
-    this.files.push(f);
+        if (f.type === this.mimeType) {
+          this.files.push(f);
+        }
+        if (!this.mimeType) {
+          this.files.push(f);
+        }
       });
     },
     handleFileInput(e) {
       let files = e.target.files;
-      files = e.target.files
-            if(!files) return;
+      if(!files) return;
       ([...files]).forEach(f => {
-    
-    this.files.push(f);
+        if (f.type === this.mimeType) {
+          this.files.push(f);
+        }
+        if (!this.mimeType) {
+          this.files.push(f);
+        }
       });
     },
     removeFile(fileKey){
       this.files.splice(fileKey, 1)
+      this.$emit('clearFile', fileKey);
     },
-    fileDragIn(){
-      this.color="white"
+    fileDragIn(e) {
     },
-    fileDragOut(){
+    fileDragOut(event){
+    }
+  },
+  watch: {
+    files () {
+      if (!this.multiply && this.files.length > 1) {
+        this.files.splice(0, this.files.length - 1);
+      }
     }
   }
 }

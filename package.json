@@ -1,5 +1,5 @@
 {
-  "name": "test-ruventus",
+  "name": "test-ruvents",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "core-js": "^3.9.1",
-    "nuxt": "^2.15.3"
+    "nuxt": "^2.15.3",
+    "vuetify-notify": "^1.0.6"
   },
   "devDependencies": {
     "@nuxtjs/style-resources": "^1.0.0",

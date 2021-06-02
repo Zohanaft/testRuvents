@@ -7711,6 +7711,11 @@ vuetify-loader@^1.6.0:
     file-loader "^6.2.0"
     loader-utils "^2.0.0"
 
+vuetify-notify@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/vuetify-notify/-/vuetify-notify-1.0.6.tgz#8b2e81199441dcde9bb2fa8e5c5aedfd2c70c37b"
+  integrity sha512-3r58j/EmPwY42xfBdVi+Y5P1dpPcq82lGMYilES3HNfZ0f9bTXEVJpHlCY+DNnb5j0hqtJOPZTXcYL0QVZ10hA==
+
 vuetify@^2.4.2:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.5.1.tgz#c7206662aceefd830acfd34abc293354796d240d"

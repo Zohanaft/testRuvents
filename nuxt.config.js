@@ -3,8 +3,8 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - test-ruventus',
-    title: 'test-ruventus',
+    titleTemplate: '%s - test-ruvents',
+    title: 'test-ruvents',
     htmlAttrs: {
       lang: 'en'
     },
@@ -17,6 +17,7 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+  ssr: false,
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
@@ -29,6 +30,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/vuetify-notify.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
