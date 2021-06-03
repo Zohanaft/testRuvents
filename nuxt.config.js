@@ -24,13 +24,14 @@ export default {
   ],
   styleResources: {
     scss: [
-      '@/assets/scss/variables.scss'
+      '@/assets/scss/main.scss'
     ]
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/vuetify-notify.js'
+    '~/plugins/vuetify-notify.js',
+    '~/plugins/api-utils.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

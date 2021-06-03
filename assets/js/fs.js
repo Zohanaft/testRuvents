@@ -1,12 +1,14 @@
 export class FileStreamer {
-    constructor(file) {
+    constructor(file, _chunkSize) {
         this.file = file;
         this.offset = 0;
         
-        this.defaultChunkSize = 5 * 1024 * 1024; // ну пусть будет 5 мб
+        this.defaultChunkSize = _chunkSize || 5 * 1024 * 1024;
+        console.log(this.defaultChunkSize / (1024*1024))
         this.size = file.size;
         // Заранее определим количество операций для eventloop
         this.chunks = Math.ceil(this.size/this.defaultChunkSize)
+        console.log(this.chunks)
         this.rewind(); // Сброс
     }
     

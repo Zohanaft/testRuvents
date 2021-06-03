@@ -41,11 +41,25 @@ export const api =  {
 
 
   async clearObjectStore() {
-    const db = await this.getDb()
     return new Promise(resolve => {
-      const trans = db.transaction([STORAGE_NAME], 'readwrite')
-      const store = trans.objectStore(STORAGE_NAME)
-        store.clear().oncomplete = resolve()
+      const request = window.indexedDB.deleteDatabase(DB_NAME)
+      request.oncomplete = () => {
+        console.log('db was droped')
+        resolve();
+      }
+    })
+  },
+
+  async getItemFromObjectStore(key) {
+    let db = await this.getDb()
+    const trans = db.transaction([STORAGE_NAME], 'readonly')
+    const store = trans.objectStore(STORAGE_NAME)
+    const storeRequest = await store.get(key)
+    
+    return new Promise(resolve => {
+      storeRequest.onsuccess = (e) => {
+        resolve(e.target.result)
+      }
     })
   },
 

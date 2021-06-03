@@ -7,7 +7,7 @@ try {
 catch {
   
 }
-fs.writeFileSync('./server.txt', '');
+fs.writeFileSync('./server.txt', '', { encoding: "utf8" });
 
 class ArraysOfRandomStringGenerator {
   /**
@@ -46,7 +46,7 @@ class ArraysOfRandomStringGenerator {
       process.stdout.clearLine(1);
     }
     */
-    fs.appendFileSync('./server.txt', this.data);
+    fs.appendFileSync('./server.txt', this.data, { encoding: "utf8" });
     this.data = ''
     if (this.currentIndex < this.stringCount) {
       
